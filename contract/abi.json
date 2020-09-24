@@ -1,5 +1,5 @@
 {
-  "address": "0x5aC67E00FAb6C61a20C9aBD08C92079F1a3fb51C",
+  "address": "0x7499C3caC8040Fc53Cb8D2a2C8c72041654901A7",
   "abi": [
     {
       "inputs": [],
@@ -402,7 +402,7 @@
           "type": "address"
         }
       ],
-      "name": "register",
+      "name": "registerUser",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

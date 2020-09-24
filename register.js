@@ -96,7 +96,7 @@ function sendSign(myData,gasLimit){
 }
 
 function _register() {
-    myData = contract.methods.register
+    myData = contract.methods.registerUser
     (
         document.getElementById('_newAddress').value
     ).encodeABI();
