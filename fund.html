@@ -36,8 +36,10 @@
     <p>Current Login Address : <b id="_addressFund"></b> </p>
     <p>Token Balances : <b id="_tokenBalances"></b> </p>
     <p>Token Deposited : <b id="_tokenDeposited"></b> </p>
-    <p>Total Token Deposited : <b id="_tokenDeposited"></b> </p>
+    <p>Total Token Deposited : <b id="_totalTokenDeposited"></b> </p>
     <p>ETH Balances: <b id="_ETH"></b> </p>
+    <p>Status : <b id="_status"></b></p>
+    <p>Counter Call Contract : <b id="_counterCall"></b></p>
     <div class="row">
         <div class="col-sm-6">
             <div class="card">
@@ -45,11 +47,27 @@
                     <h5 class="card-title">Deposit/Withdraw Token</h5>
                     <div class="container">
                         <div class="form-group row-cols-2">
-                            <label for="_amountToken">Token</label>
+                            <label for="_amountToken">Minimum Deposit 10</label>
                             <input type="number" min="0" class="form-control form-control-sm" id="_amountToken" placeholder="Amount of Token">
                         </div>
                         <button type="button" onclick="_depositToken()" class="btn btn-primary">Deposit</button>
                         <button type="button" onclick="_withdrawToken()" class="btn btn-primary">Withdraw</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Register Address</h5>
+                    <div class="container">
+                        <div class="form-group row-cols-2">
+                            <label for="_newAddress">Ethereum Address</label>
+                            <input type="text" min="0" class="form-control form-control-sm" id="_newAddress" placeholder="New Address">
+                        </div>
+                        <button type="button" onclick="_registerUser()" class="btn btn-primary">Register</button>
                     </div>
                 </div>
             </div>

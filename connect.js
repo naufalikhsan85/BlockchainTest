@@ -69,14 +69,7 @@ async function checkUser(current_account) {
     let _status= await contract.methods.checkUser(current_account).call()
     document.getElementById("_status").innerHTML=_status;
 
-    if(_status==="Registered User"){
-        setTimeout(function(){ document.location.href="/fund.html"; }, 2000);
-
-    }
-    else{
-        setTimeout(function(){ document.location.href="/register.html"; }, 2000);
-
-    }
+    setTimeout(function(){ document.location.href="/fund.html"; }, 2000);
 }
 
 let keyStoreEnc

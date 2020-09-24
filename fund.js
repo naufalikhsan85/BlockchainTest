@@ -94,18 +94,25 @@ function sendSign(myData,gasLimit){
     });
 }
 
-function _deposit() {
+function _depositToken() {
     myData = contract.methods.deposit
     (
-        document.getElementById("_amountIDR").value
+        document.getElementById("_amountToken").value
     ).encodeABI();
     sendSign(myData,sTx);
 }
 
-function _withdraw() {
+function _withdrawToken() {
     myData = contract.methods.withdraw
     (
-        document.getElementById("_amountIDR").value
+        document.getElementById("_amountToken").value
+    ).encodeABI();
+    sendSign(myData,sTx);
+}
+function _registerUser() {
+    myData = contract.methods.registerUser
+    (
+        document.getElementById("_newAddress").value
     ).encodeABI();
     sendSign(myData,sTx);
 }
@@ -116,13 +123,23 @@ function _reload(){
 }
 
 
-async function _getMyBalanceIDR() {
-    document.getElementById("_balances").innerHTML= await contract.methods.getMyBalanceIDR(current_account).call()
+async function _getMyBalance() {
     document.getElementById("_addressFund").innerHTML=current_account
+
+    document.getElementById("_totalTokenDeposited").innerHTML= await contract.methods.checkTotalDeposit().call()
+    document.getElementById("_status").innerHTML= await contract.methods.checkUser(current_account).call()
+    document.getElementById("_counterCall").innerHTML= await contract.methods.checkCounterCall().call()
 }
 
+async function _getMyBalance2() {
+    document.getElementById("_tokenBalances").innerHTML = await contract.methods.checkTokenBalance().call()
+    document.getElementById("_tokenDeposited").innerHTML = await contract.methods.checkDepositBalance().call()
+}
+
+
 function _onload(){
-    _getMyBalanceIDR();
+    _getMyBalance();
+    _getMyBalance2();
     setTimeout(function () { location.reload(1); }, 300000);
     web3.eth.getBalance(current_account, function (error, wei) {
         if (!error) {
