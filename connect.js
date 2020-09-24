@@ -2,7 +2,7 @@ const provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/0
 const web3 = new Web3(provider);
 
 
-let url='https://energydapp.000webhostapp.com/abi.json'
+let url='https://raw.githubusercontent.com/naufalikhsan85/BlockchainTest/master/contract/abi.json'
 
 //'http://192.168.100.6:8080/abi.json'
 //'https://energydapp.000webhostapp.com/abi.json'

@@ -94,32 +94,18 @@ function sendSign(myData,gasLimit){
     });
 }
 
-function _depositIDR() {
-    myData = contract.methods.depositIDR
+function _deposit() {
+    myData = contract.methods.deposit
     (
-        current_account,
-        document.getElementById("_amountIDR").value,
-        pinUser
+        document.getElementById("_amountIDR").value
     ).encodeABI();
     sendSign(myData,sTx);
 }
 
-function _withdrawIDR() {
-    myData = contract.methods.withdrawIDR
+function _withdraw() {
+    myData = contract.methods.withdraw
     (
-        current_account,
-        document.getElementById("_amountIDR").value,
-        pinUser
-    ).encodeABI();
-    sendSign(myData,sTx);
-}
-
-function _toTransferIDR() {
-    myData = contract.methods.toTransferIDR
-    (
-        document.getElementById("_address").value,
-        document.getElementById("_transfer").value,
-        pinUser
+        document.getElementById("_amountIDR").value
     ).encodeABI();
     sendSign(myData,sTx);
 }
@@ -134,12 +120,9 @@ async function _getMyBalanceIDR() {
     document.getElementById("_balances").innerHTML= await contract.methods.getMyBalanceIDR(current_account).call()
     document.getElementById("_addressFund").innerHTML=current_account
 }
-async function _getCirculateIDR(){
-    document.getElementById("_circulateIDR").innerHTML=await contract.methods.getCirculateIDR().call()
-}
+
 function _onload(){
     _getMyBalanceIDR();
-    _getCirculateIDR()
     setTimeout(function () { location.reload(1); }, 300000);
     web3.eth.getBalance(current_account, function (error, wei) {
         if (!error) {
@@ -149,34 +132,6 @@ function _onload(){
         }
     });
 }
-let pinUser;
-
-async function inputPIN(){
-
-    let inputPINuser=prompt("Please Enter Your 6 PIN Number to Continue:");
-    if(inputPINuser === null){
-        alert("PIN Must Not Empty")
-        inputPIN()
-    }
-    else{
-        pinUser= web3.utils.soliditySha3(web3.utils.soliditySha3(inputPINuser));
-    }
-    //console.log(pinUser)
-
-    let statusPIN= await contract.methods.checkPINInput(current_account,pinUser).call()
-    console.log(statusPIN)
-
-    if(statusPIN === "True"){
-        alert("Welcome")
-    }
-    else{
-        alert("Wrong PIN")
-        setTimeout(inputPIN, 1000);
-    }
-
-}
-
 
 
 window.onload = _onload();
-window.onload=inputPIN();
