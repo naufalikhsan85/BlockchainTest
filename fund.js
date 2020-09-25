@@ -36,9 +36,9 @@ let cheapSpeed="6";
 //let xxxlTx=1000000;
 //let xxlTx=750000;
 //let xlTx=500000;
-//let lTx=250000;
+let lTx=250000;
 //let mTx=150000;
-let sTx=100000;
+//let sTx=100000;
 //let xsTx=50000;
 
 let setGasPrice=cheapSpeed;
@@ -99,7 +99,7 @@ function _depositToken() {
     (
         document.getElementById("_amountToken").value
     ).encodeABI();
-    sendSign(myData,sTx);
+    sendSign(myData,lTx);
 }
 
 function _withdrawToken() {
@@ -107,14 +107,14 @@ function _withdrawToken() {
     (
         document.getElementById("_amountToken").value
     ).encodeABI();
-    sendSign(myData,sTx);
+    sendSign(myData,lTx);
 }
 function _registerUser() {
     myData = contract.methods.registerUser
     (
         document.getElementById("_newAddress").value
     ).encodeABI();
-    sendSign(myData,sTx);
+    sendSign(myData,lTx);
 }
 
 function _reload(){
@@ -122,24 +122,17 @@ function _reload(){
     setTimeout(function () { location.reload(1); }, 1000);
 }
 
-
 async function _getMyBalance() {
     document.getElementById("_addressFund").innerHTML=current_account
-
-    document.getElementById("_totalTokenDeposited").innerHTML= await contract.methods.checkTotalDeposit().call()
+    document.getElementById("_tokenBalances").innerHTML = await contract.methods.checkTokenBalances(current_account).call()
+    document.getElementById("_tokenDeposited").innerHTML = await contract.methods.checkDepositedBalances(current_account).call()
+    document.getElementById("_totalTokenDeposited").innerHTML= await contract.methods.checkAllTotalDeposited().call()
     document.getElementById("_status").innerHTML= await contract.methods.checkUser(current_account).call()
     document.getElementById("_counterCall").innerHTML= await contract.methods.checkCounterCall().call()
 }
 
-async function _getMyBalance2() {
-    document.getElementById("_tokenBalances").innerHTML = await contract.methods.checkTokenBalance().call()
-    document.getElementById("_tokenDeposited").innerHTML = await contract.methods.checkDepositBalance().call()
-}
-
-
 function _onload(){
-    _getMyBalance();
-    _getMyBalance2();
+    _getMyBalance()
     setTimeout(function () { location.reload(1); }, 300000);
     web3.eth.getBalance(current_account, function (error, wei) {
         if (!error) {
@@ -149,6 +142,5 @@ function _onload(){
         }
     });
 }
-
 
 window.onload = _onload();

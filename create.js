@@ -37,13 +37,11 @@ function convert(inputTs){
 
 }
 
-
 function generate() {
     let dataAcc= web3.eth.accounts.create()
     let newPass=document.getElementById('_newPass').value;
     encryptPrivateKey(dataAcc.privateKey,dataAcc.address,newPass)
 }
-
 
 function encryptOldPrivateKey() {
     let privateKeyOld=document.getElementById('_privateKey').value;
@@ -53,8 +51,6 @@ function encryptOldPrivateKey() {
     let encPass=document.getElementById('_keyEncPass').value;
     encryptPrivateKey(hexKey,current_account,encPass)
 }
-
-
 
 function encryptPrivateKey(privateKey,address,pass) {
     let encryptData=web3.eth.accounts.encrypt(privateKey,pass)
@@ -69,7 +65,6 @@ function encryptPrivateKey(privateKey,address,pass) {
     });
 
     saveAs(fileToSave, fileName);
-
 }
 function decryptKeyStore() {
     let objKeyStore = JSON.parse(keyStoreEnc);
@@ -94,7 +89,6 @@ function readFile(input) {
     reader.onload = function() {
         console.log(reader.result);
         keyStoreEnc=reader.result
-
     };
 
     reader.onerror = function() {

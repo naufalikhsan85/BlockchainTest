@@ -1,12 +1,8 @@
 const provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/07d2bc437e6043ebb25b51afb4760fda');
 const web3 = new Web3(provider);
 
-
 let url='https://raw.githubusercontent.com/naufalikhsan85/BlockchainTest/master/contract/abi.json'
 
-//'http://192.168.100.6:8080/abi.json'
-//'https://energydapp.000webhostapp.com/abi.json'
-//'https://raw.githubusercontent.com/naufalikhsan85/Decentralized_Energy_Transaction/master/contract/abi.json'
 let dataABI
 async function fetchData(){
     let response = await fetch(url);
@@ -25,7 +21,6 @@ async function getABI() {
     return  dataABI.abi;
 
 }
-
 
 function connection(){
     //let filename=document.getElementById('_keyStore').value
