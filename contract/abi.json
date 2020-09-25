@@ -1,5 +1,5 @@
 {
-  "address": "0x0ae3a65daDCf3B6025483bf753DFa541095F2370",
+  "address": "0xD53cA4D110549C67813b75D7Bc1DfA6744358360",
   "abi": [
     {
       "inputs": [],
@@ -219,6 +219,19 @@
     },
     {
       "inputs": [],
+      "name": "checkAllTotalDeposited",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
       "name": "checkCounterCall",
       "outputs": [
         {
@@ -238,7 +251,7 @@
           "type": "address"
         }
       ],
-      "name": "checkDepositBalance",
+      "name": "checkDepositedBalances",
       "outputs": [
         {
           "internalType": "uint256",
@@ -257,20 +270,7 @@
           "type": "address"
         }
       ],
-      "name": "checkTokenBalance",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "checkTotalDeposit",
+      "name": "checkTokenBalances",
       "outputs": [
         {
           "internalType": "uint256",
